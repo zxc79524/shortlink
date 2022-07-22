@@ -1,7 +1,6 @@
 package idv.blake.shortlink.controller;
 
 import java.net.MalformedURLException;
-import java.net.URL;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import idv.blake.shortlink.exception.NotFoundException;
 import idv.blake.shortlink.model.shortlink.ShortLinkServiceV1;
+import idv.blake.shortlink.util.HttpRequestUtil;
 
 @Controller
 public class ShortLinkController {
@@ -38,7 +38,7 @@ public class ShortLinkController {
 	}
 
 	/**
-	 * 顯示產生短連結的結果頁面
+	 * 顯示產生短網址的結果頁面
 	 * 
 	 * @param request
 	 * @param model
@@ -52,11 +52,9 @@ public class ShortLinkController {
 			String url = request.getParameter("url");
 			String shortlink = shortLinkServiceV1.generateShortLink(url);
 
-			URL requestURL = new URL(request.getRequestURL().toString());
-			String port = requestURL.getPort() == -1 ? "" : ":" + requestURL.getPort();
-			String domainName = requestURL.getProtocol() + "://" + requestURL.getHost() + port + "/" + shortlink;
+			String result = HttpRequestUtil.getDomainName(request) + "/" + shortlink;
 
-			model.addAttribute("shortlink", domainName);
+			model.addAttribute("shortlink", result);
 
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -67,7 +65,7 @@ public class ShortLinkController {
 	}
 
 	/**
-	 * 顯示產生短連結的結果頁面
+	 * 顯示產生短網址的結果頁面
 	 * 
 	 * @param request
 	 * @param model
@@ -91,9 +89,9 @@ public class ShortLinkController {
 		}
 
 		try {
-			URL requestURL = new URL(request.getRequestURL().toString());
-			String port = requestURL.getPort() == -1 ? "" : ":" + requestURL.getPort();
-			String domainName = requestURL.getProtocol() + "://" + requestURL.getHost() + port;
+
+			String domainName = HttpRequestUtil.getDomainName(request);
+
 			response.setStatus(302);
 			response.setHeader("Location", domainName);
 			return null;

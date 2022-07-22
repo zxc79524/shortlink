@@ -38,11 +38,11 @@ public class ShortLinkServiceV1 {
 
 	/**
 	 * 
-	 * 回傳短連結對應的長網址
+	 * 回傳短網址對應的長網址
 	 * 
 	 * @param shortlink
 	 * @return 
-	 * @throws NotFoundException 找不到對應的短連結
+	 * @throws NotFoundException 找不到對應的短網址
 	 */
 	public String getRedirectURL(String shortlink) throws NotFoundException {
 
