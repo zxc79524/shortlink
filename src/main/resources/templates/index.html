@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>My first Page by thymeleaf</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<!--<p>My first Page by thymeleaf</p>-->
+	<div id="top"
+		style="float: left; text-align: center; width: 100%; font-size: 50px; padding: 20px">短網址服務DEMO展示</div>
+
+	<div id="content"
+		style="float: left; text-align: center; width: 100%; height: 100%">
+
+
+
+		<form action="/gen" method="post">
+			<div class="form-example">
+				<label for="url">請輸入網址: </label> <input type="text" name="url"
+					id="url" required>
+			</div>
+
+			<input type="submit" value="產生短網址" style="margin-top: 10px;">
+		</form>
+	</div>
+
+	<div id="bottom"
+		style="float: left; text-align: center; width: 100%; font-size: 14px; padding: 20px">使用須知:此網頁服務僅做DEMO使用,並不為可靠性和穩定性作保證</div>
+</body>
+
+
+</html>

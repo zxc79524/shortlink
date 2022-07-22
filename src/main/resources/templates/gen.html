@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>短連結</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div id="content"
+		style="float: left; text-align: center; width: 100%; height: 100%">
+		<p>你的短網址是</p>
+
+		<a th:href="${shortlink}">
+			<p th:text="${shortlink}" />
+		</a>
+
+
+	</div>
+</body>
+
+
+</html>
